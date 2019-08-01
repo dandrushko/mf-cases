@@ -1,0 +1,22 @@
+heat_template_version: 2016-10-14
+
+description: Designate resources
+
+
+resources:
+  
+  mf_domain:
+    type: OS::Designate::Zone
+    properties:
+      name: megafon.local.
+      email: admin@megafon.local
+      ttl: 3600
+
+  mf_record:
+    type: OS::Designate::RecordSet
+    properties:
+      description: Sample DNS record
+      name: instance.megafon.local.
+      type: A
+      records: [ 192.168.1.1 ]
+      zone: {get_resource: mf_domain} 

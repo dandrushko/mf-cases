@@ -18,7 +18,7 @@ parameters:
 
   public_subnet:
     type: string
-    default: f01d0b59-c07f-46b1-959e-a3a7a4f7aa42 
+    default: 1bab0b28-f875-44b6-a92d-5834a54c54fb 
 
   image:
     type: string
@@ -137,11 +137,12 @@ resources:
       floating_network: { get_param: public_network }
       port_id: { get_attr: [loadbalancer, vip_port_id ]}
 
+
   mf_domain:
     type: OS::Designate::Zone
     properties:
-      name: megafon.poc.
-      email: admin@megafon.poc
+      name: megafon.local.
+      email: admin@megafon.local
       ttl: 3600
 
 outputs:
